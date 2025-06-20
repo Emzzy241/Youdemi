@@ -1,0 +1,32 @@
+### Testing App's connection
+GET http://localhost:5000/
+
+### Still Testing
+GET http://localhost:5000/hi
+
+### Testing the /auth/login
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "username": "Dynasty",
+    "password": "123123123"
+}
+
+### Testing the /register
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "username": "Dynasty",
+    "email": "dynasty@email.com",
+    "password": "123123123"
+}
+
+### Testing the /auth/logout --  TODO
+GET http://localhost:5000/auth/logout
+
+### Testing the /courses
+GET http://localhost:5000/app
+
+Authorization: 
