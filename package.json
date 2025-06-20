@@ -1,0 +1,22 @@
+{
+  "name": "youdemi-fullstack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --watch ./src/server.js"
+  },
+  "keywords": [],
+  "author": "Emmanuel Mojiboye (Dynasty)",
+  "license": "ISC",
+  "description": "A dockerized fullstack educational platform that uses a NodeJS backend, postgreSQL database, a Prisma ORM, and JWT Authentication.",
+  "dependencies": {
+    "@prisma/client": "^6.10.1",  
+    "bcryptjs": "^3.0.2",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.1",
+    "prisma": "^6.10.1"
+  }
+}
