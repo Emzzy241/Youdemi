@@ -9,8 +9,8 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-    "username": "Emazon",
-    "password": "123123123"
+    "username": "Sarah",
+    "password": "Mojiboye"
 }
 
 ### Testing the /register
@@ -18,9 +18,9 @@ POST http://localhost:5000/auth/register
 Content-Type: application/json
 
 {
-    "username": "Emazon",
-    "email": "emazon@email.com",
-    "password": "123123123"
+    "username": "Sarah",
+    "email": "sarah@email.com",
+    "password": "Mojiboye"
 }
 
 ### Testing the /auth/logout --  TODO
