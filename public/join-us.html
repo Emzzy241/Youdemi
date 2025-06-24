@@ -18,13 +18,14 @@
                     <h2 class="title">Sign In</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
+                        <p id="error" style="display: none;"></p>
                         <input type="text" placeholder="Username" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="Password" />
                     </div>
-                    <input type="submit" value="Login" class="btn solid" />
+                    <input id="authBtnLogin" onclick="authenticate()" type="submit" value="Login" class="btn solid" />
                     <a href="./dashboard.html">Dashboard Page</a>
 
                     <p class="social-text">Or Sign in with social platforms</p>
@@ -57,7 +58,7 @@
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" />
+                        <input id="authBtnRegister" onclick="authenticate()" type="password" placeholder="Password" />
                     </div>
                     <input type="submit" value="Sign Up" class="btn solid" />
 
@@ -102,19 +103,134 @@
     </div>
 
     <script>
-        const sign_in_btn = document.querySelector("#sign-in-btn");
-        const sign_up_btn = document.querySelector("#sign-up-btn");
-        const container = document.querySelector(".container");
+
+        let token = localStorage.getItem('token')
+
+        let isLoading = false
+        let isAuthenticating = false
+        let isRegistration = false
+        let courses = []
+
+        const apiBase = '/'
+
+
+        // elements
+        const textError = document.querySelector('#error')
+        const authBtnLogin = document.querySelector('#authBtnLogin')
+        const authBtnRegister = document.querySelector('#authBtnRegister')
+        const sign_in_btn = document.querySelector("#sign-in-btn")
+        const sign_up_btn = document.querySelector("#sign-up-btn")
+        const container = document.querySelector(".container")
 
         sign_up_btn.addEventListener('click', () => {
-            container.classList.add("sign-up-mode");
-        });
+            container.classList.add("sign-up-mode")
+        })
 
         sign_in_btn.addEventListener('click', () => {
-            container.classList.remove("sign-up-mode");
-        });
+            container.classList.remove("sign-up-mode")
+        })
 
-        
+        async function authenticate() {
+            const emailVal = document.querySelector('.sign-in-form input[type="text"]').value
+            const passwordVal = document.querySelector('.sign-in-form input[type="password"]').value
+
+            // guard clauses while authenticating
+            if (
+                isLoading ||
+                isAuthenticating ||
+                isRegistration ||
+                !emailVal ||
+                !passwordVal
+            ) { return }
+
+            // Else, set the loading state
+            isAuthenticating = true
+            error.style.display = 'none'
+            authBtn.innerText = 'Authenticating...'
+            authBtnLogin.disabled = true
+            authBtnRegister.disabled = true
+
+            try {
+                let data 
+                if (isRegistration) {
+                    // register an account
+                    const response = await fetch(apiBase + 'auth/register', {
+                        method:POST,
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username: emailVal, password: passwordVal })
+                    })
+                    data = await response.json()
+                } else {
+                    const response = await fetch(apiBase + 'auth/login', {
+                        method: POST,
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username: emailVal, password: passwordVal })
+                    })
+                    data = await response.json()
+                }
+
+                if (data.token) {
+                    token = data.token
+                    localStorage.getItem('token', token)
+                    window.location.href = './dashboard.html'
+
+                    // authenticating into loading
+                    authBtnLogin.innerText = 'Loading...'
+                    authBtnLogin.disabled = false
+                    authBtnRegister.disabled = false
+
+                    // fetch courses
+                    await fetchCourses()
+
+                    // show the dashboard
+                    window.location.href = './dashboard.html'
+                } else {
+                    throw Error('❌ Failed to authenticate...')
+                }
+            } catch (err) {
+                console.log(err.message)
+                error.innerText = err.message
+                error.style.display = 'block'
+                authBtnLogin.innerText = 'Login'
+                authBtnLogin.disabled = false
+                authBtnRegister.disabled = false
+            } finally {
+                authBrn.innerText = 'Login'
+                isAuthenticating = false
+                authBtnLogin.disabled = false
+                authBtnRegister.disabled = false
+            }
+        }
+
+        // CRUD LOGIC
+        async function fetchCourses(params) {
+            isLoading = true
+            const response = await fetch(apiBase + 'courses', {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }
+            })
+
+            const coursesData = await response.json()
+            courses = coursesData
+            isLoading = false
+            renderCourses(courses)
+        }
+
+        function renderCourses(courses) {
+            const coursesContainer = document.querySelector('.courses-container')
+            coursesContainer.innerHTML = ''
+            courses.forEach(course => {
+                const courseElement = document.createElement('div')
+                courseElement.classList.add('course')
+                courseElement.innerHTML = `
+                    <h3>${course.title}</h3>
+                    <p>${course.description}</p>
+                    <button class="btn">View Course</button>
+                `
+                coursesContainer.appendChild(courseElement)
+            })
+        }
+
     </script>
 </body>
 
