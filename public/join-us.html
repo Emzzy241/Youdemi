@@ -140,7 +140,11 @@
                 ? document.querySelector('.sign-up-form input[type="password"]').value
                 : document.querySelector('.sign-in-form input[type="password"]').value
 
-            if (!username || !password) {
+            const email = isRegistering
+                ? document.querySelector('.sign-up-form input[type="email"]').value
+                : null
+
+            if (!username || !password || (isRegistering && !email)) {
                 textError.innerText = '❌ Please fill in all fields.'
                 textError.style.display = 'block'
                 return

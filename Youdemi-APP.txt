@@ -11,6 +11,12 @@ CSS
 JavaScript
 
 
+// Accounts to use (you can use to login):
+1. Emazon | emazon@email.com | 123123123
+2. Sarah | Mojiboye
+3. Usain | boltsman@gmail.com | bolt
+
+
 What App will do, Very simple inside the public directory, I will just add everything, the html css and js into a single page be it for the sign-up Page or the Actual Page itself.
 
 
