@@ -14,7 +14,7 @@
     <div class="container">
         <div class="forms-container">
             <div class="signin-signup">
-                <form action="" class="sign-in-form">
+                <form action="" class="sign-in-form" onsubmit="authenticate(false); return false;">
                     <h2 class="title">Sign In</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
@@ -46,7 +46,7 @@
                 </form>
 
 
-                <form action="" class="sign-up-form">
+                <form action="" class="sign-up-form" onsubmit="authenticate(true); return false;">
                     <h2 class="title">Sign Up</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
@@ -130,75 +130,42 @@
             container.classList.remove("sign-up-mode")
         })
 
-        async function authenticate() {
-            const emailVal = document.querySelector('.sign-in-form input[type="text"]').value
-            const passwordVal = document.querySelector('.sign-in-form input[type="password"]').value
+        async function authenticate(isRegistering) {
+            // isRegistering is a boolean parameter that determines if the user is registering or logging in
+            const username = isRegistering
+                ? document.querySelector('.sign-up-form input[type="text"]').value
+                : document.querySelector('.sign-in-form input[type="text"]').value
 
-            // guard clauses while authenticating
-            if (
-                isLoading ||
-                isAuthenticating ||
-                isRegistration ||
-                !emailVal ||
-                !passwordVal
-            ) { return }
+            const password = isRegistering
+                ? document.querySelector('.sign-up-form input[type="password"]').value
+                : document.querySelector('.sign-in-form input[type="password"]').value
 
-            // Else, set the loading state
-            isAuthenticating = true
-            error.style.display = 'none'
-            authBtn.innerText = 'Authenticating...'
-            authBtnLogin.disabled = true
-            authBtnRegister.disabled = true
+            if (!username || !password) {
+                textError.innerText = '❌ Please fill in all fields.'
+                textError.style.display = 'block'
+                return
+            }
 
             try {
-                let data 
-                if (isRegistration) {
-                    // register an account
-                    const response = await fetch(apiBase + 'auth/register', {
-                        method:POST,
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ username: emailVal, password: passwordVal })
-                    })
-                    data = await response.json()
-                } else {
-                    const response = await fetch(apiBase + 'auth/login', {
-                        method: POST,
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ username: emailVal, password: passwordVal })
-                    })
-                    data = await response.json()
-                }
+                textError.style.display = 'none';
+                const route = isRegistering ? 'auth/register' : 'auth/login';
+                const response = await fetch(apiBase + route, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
 
                 if (data.token) {
-                    token = data.token
-                    localStorage.getItem('token', token)
-                    window.location.href = './dashboard.html'
-
-                    // authenticating into loading
-                    authBtnLogin.innerText = 'Loading...'
-                    authBtnLogin.disabled = false
-                    authBtnRegister.disabled = false
-
-                    // fetch courses
-                    await fetchCourses()
-
-                    // show the dashboard
-                    window.location.href = './dashboard.html'
+                    localStorage.setItem('token', data.token);
+                    window.location.href = './dashboard.html';
                 } else {
-                    throw Error('❌ Failed to authenticate...')
+                    throw new Error(data.message || 'Authentication failed.');
                 }
             } catch (err) {
-                console.log(err.message)
-                error.innerText = err.message
-                error.style.display = 'block'
-                authBtnLogin.innerText = 'Login'
-                authBtnLogin.disabled = false
-                authBtnRegister.disabled = false
-            } finally {
-                authBrn.innerText = 'Login'
-                isAuthenticating = false
-                authBtnLogin.disabled = false
-                authBtnRegister.disabled = false
+                textError.innerText = err.message;
+                textError.style.display = 'block';
             }
         }
 
