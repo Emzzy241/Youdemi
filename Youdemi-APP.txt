@@ -1,0 +1,143 @@
+// MY JOTTINGS FOR Youdemi APPLICATION
+
+Making a basic sign-up + sign-in into  the Youdemi Project.
+
+Stack for it:
+Prisma ORM
+PostgreSQL
+Docker to containerize our application
+Html
+CSS
+JavaScript
+
+
+What App will do, Very simple inside the public directory, I will just add everything, the html css and js into a single page be it for the sign-up Page or the Actual Page itself.
+
+
+Let's go!!!
+
+
+Steps:
+1. Setup App, then run npm install and npm start (after creating a start script: node ./server.js in manifest)
+2. npx prisma init -- To create a prisma client, and also helps to fix bug that keeps breaking the start of the application, also to create the prisma/schema.prisma file
+
+
+// Check the dashboard.html file, there are 2 things you need to do:
+1. confirm 
+2. Set the course status to completed
+
+
+
+
+
+// TODO, Later On,
+
+// A confirm Password feature, and test it in the REST Emulator
+
+// Update the COure table to reflect this, as this is something very similar to what I hope to achieve
+
+
+{
+    "courseName": "CHM 101 - Chemistry",
+    "courseDescription": "An introductory course in Chemistry covering basic principles and concepts.",
+    "courseImage": "https://example.com/course-image.jpg",
+    "coursePrice": 49.99,
+    "courseCategory": "Science",
+    "courseDuration": "10 weeks",
+    "courseInstructor": "Dr. Jane Doe",
+    "courseContent": [
+        {
+            "title": "Week 1: Introduction to Chemistry",
+            "description": "Overview of basic chemistry concepts and principles.",
+            "resources": [
+                {
+                    "type": "video",
+                    "url": "https://example.com/video1.mp4"
+                },
+                {
+                    "type": "document",
+                    "url": "https://example.com/document1.pdf"
+                }
+            ]
+        },
+        {
+            "title": "Week 2: Atomic Structure",
+            "description": "Understanding the structure of atoms and their components.",
+            "resources": [
+                {
+                    "type": "video",
+                    "url": "https://example.com/video2.mp4"
+                }
+            ]
+        }
+    ]
+}
+
+//Below is th current Course schema that we have, later on, update it to reflect this so you can now make a POST /COURSE to add a new course:
+
+
+model Course {
+  id        Int     @id @default(autoincrement())
+  courseName      String
+  completed Boolean @default(false)
+  userId    Int
+  user      User    @relation(fields: [userId], references: [id])
+}
+
+
+
+
+// TODO: FOR THE COUSES, WRITE ENDPOINTS FOR THE FOLLOWING:
+
+### Testing the /app/completed endpoint to get all completed courses
+GET http://localhost:5000/app/completed
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
+### Testing the /app/active endpoint to get all active courses
+GET http://localhost:5000/app/active
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
+### Testing the /app/archived endpoint to get all archived courses
+GET http://localhost:5000/app/archived
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
+### Testing the /app/search endpoint to search for courses by name
+GET http://localhost:5000/app/search?courseName=CHM
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
+### Testing the /app/archived/:id endpoint to archive a specific course by ID
+POST http://localhost:5000/app/archived/36
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
+
+{
+    "archived": 1
+}
+### Testing the /app/archived/:id endpoint to unarchive a specific course by ID
+POST http://localhost:5000/app/archived/36
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
+
+{
+    "archived": 0
+}
+### Testing the /app/completed/:id endpoint to mark a specific course as completed by ID
+POST http://localhost:5000/app/completed/36
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
+
+{
+    "completed": 1
+}
+### Testing the /app/completed/:id endpoint to mark a specific course as not completed by ID
+POST http://localhost:5000/app/completed/36
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
+
+{
+    "completed": 0
+}
+### Testing the /app/completed/:id endpoint to mark a specific course as active by ID
+POST http://localhost:5000/app/active/36
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
+
+{
+    "active": 1
+}
