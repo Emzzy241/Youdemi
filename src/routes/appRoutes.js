@@ -15,12 +15,28 @@ router.get('/', async (req, res) => {
     res.json(courses)
 })
 
+router.get('/:id', async (req, res) => {
+    console.log(req.params)
+    const { id } = req.params
+    const userId = req.userId
+    const course = await prisma.course.findUnique({
+        where: {
+            id: parseInt(id),
+            userId
+        }
+    })
+    if (!course) {
+        return res.status(404).send({ message: "Course not found" })
+    }
+    res.json(course)
+})
+
 router.post('/', async (req, res) => {
     const { courseName } = req.body
 
     const course = await prisma.course.create({
         data: {
-            course,
+            courseName,
             userId: req.userId
         }
     })
@@ -29,21 +45,30 @@ router.post('/', async (req, res) => {
 })
 
 router.put('/:id', async (req, res) => {
-    const { completed } = req.body
-    const { id } = req.params
+    try {
+        const { completed } = req.body
+        const { id } = req.params
 
-    const updatedCourse = await prisma.course.update({
-        where: {
-            id: parseInt(id),
-            userId
-        }
-    })
+        const updatedCourse = await prisma.course.update({
+            where: {
+                id: parseInt(id),
+                userId: req.userId
+            },
+            data: {
+                courseName: req.body.courseName,
+                completed: !!completed
+            }
+        })
+    } catch (err) {
+        console.log(err.message)
+        return res.status(500).send({ message: "An error occurred while updating the course \n Please check if that course ID still exists" })
+
+    }
     res.json(updatedCourse)
 })
 
 router.delete('/:id', async (req, res) => {
-    const { id } = req.body
-
+    const { id } = req.params
     const userId = req.body
 
     await prisma.course.delete({

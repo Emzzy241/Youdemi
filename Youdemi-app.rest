@@ -24,9 +24,36 @@ Content-Type: application/json
 }
 
 ### Testing the /auth/logout --  TODO
+
 GET http://localhost:5000/auth/logout
 
-### Testing the /courses
+### Testing the /app endpoint to return all courses, later on, I have to update this endpoint and change the route to /courses
 GET http://localhost:5000/app
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
 
-Authorization: 
+### Testing the POST /app endpoint to create a new course
+POST http://localhost:5000/app
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
+
+{
+    "courseName": "CHM 101 - Chemistry"
+}
+
+### Testing the GET /app/:id endpoint to get a specific course by ID
+GET http://localhost:5000/app/34
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
+
+### Testing the PUT /app/:id endpoint to update a specific course by ID
+PUT http://localhost:5000/app/36
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
+
+{
+    "courseName": "CHM 101 - Introduction to Chemistry",
+    "completed": 1
+}
+
+### Testing the DELETE /app/:id endpoint to delete a specific course by ID
+DELETE http://localhost:5000/app/36
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
