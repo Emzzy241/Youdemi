@@ -23,7 +23,7 @@ router.post('/register', async (req, res) => {
             data: {
                 username,
                 email,
-                hashedPassword
+                password: hashedPassword
             }
         })
 

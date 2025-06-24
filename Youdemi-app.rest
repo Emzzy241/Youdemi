@@ -9,7 +9,7 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-    "username": "Dynasty",
+    "username": "Emazon",
     "password": "123123123"
 }
 
@@ -18,8 +18,8 @@ POST http://localhost:5000/auth/register
 Content-Type: application/json
 
 {
-    "username": "Dynasty",
-    "email": "dynasty@email.com",
+    "username": "Emazon",
+    "email": "emazon@email.com",
     "password": "123123123"
 }
 
