@@ -131,13 +131,16 @@
         })
 
         async function authenticate(isRegistering) {
+
+
+
             const username = isRegistering
                 ? document.querySelector('.sign-up-form input[placeholder="Username"]').value
                 : document.querySelector('.sign-in-form input[placeholder="Username"]').value;
 
             const email = isRegistering
                 ? document.querySelector('.sign-up-form input[placeholder="Email"]').value
-                : null;
+                : username.includes('@') ? username : null;
 
             const password = isRegistering
                 ? document.querySelector('.sign-up-form input[placeholder="Password"]').value
@@ -146,21 +149,31 @@
             if (!username || !password || (isRegistering && !email)) {
                 textError.innerText = '❌ Please fill in all fields.';
                 textError.style.display = 'block';
+                setTimeout(() => {
+                    textError.style.display = 'none';
+                }, 3000);
                 return;
+
             }
 
             try {
                 textError.style.display = 'none';
                 const route = isRegistering ? 'auth/register' : 'auth/login';
 
-                const body = isRegistering
-                    ? JSON.stringify({ username, password, email })
-                    : JSON.stringify({ username, password });
+                const payload = isRegistering
+                    ? { username, email, password }
+                    : email
+                        ? { email, password }
+                        : { username, password };
+
+                // const body = isRegistering
+                //     ? JSON.stringify({ username, password, email })
+                //     : JSON.stringify({ username, password });
 
                 const response = await fetch(apiBase + route, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body
+                    body: JSON.stringify(payload)
                 });
 
                 const data = await response.json();
