@@ -60,7 +60,7 @@
         const password = document.getElementById('passwordInput')
         const registerBtn = document.getElementById('registerBtn')
         const authBtn = document.getElementById('authBtn')
-        const addTodoBtn = document.getElementById('addTodoBtn')
+        const addCourseBtn = document.getElementById('addCourseBtn')
         // const deleteBtn = document.getElementById('')
         // const updateBtn = 
 
@@ -123,16 +123,16 @@
             todos.filter(val => {
                 return selectedTab === 'All' ? true : selectedTab === 'Complete' ? val.completed : !val.completed
             }).forEach((todo, todoIndex) => {
-                const taskIndex = todo.id
+                const courseIndex = todo.id
                 courseList += `
             <div class="card todo-item">
-                <p>${todo.task}</p>
+                <p>${todo.course}</p>
                 
                 <div class="todo-buttons">
-                    <button onclick="updateTodo(${taskIndex})" ${todo.completed ? 'disabled' : ''}>
+                    <button onclick="updateTodo(${courseIndex})" ${todo.completed ? 'disabled' : ''}>
                         <h6>Done</h6>
                     </button>
-                    <button onclick="deleteTodo(${taskIndex})">
+                    <button onclick="deleteTodo(${courseIndex})">
                         <h6>Delete</h6>
                     </button>
                 </div>
@@ -141,7 +141,7 @@
             })
             courseList += `
         <div class="input-container">
-            <input id="todoInput" placeholder="Add task" />
+            <input id="todoInput" placeholder="Add course" />
             <button onclick="addTodo()">
                 <i class="fa-solid fa-plus"></i>
             </button>
@@ -262,7 +262,7 @@
             const courseInput = document.getElementById('courseInput')
             const course = courseInput.value
 
-            if (!task) { return }
+            if (!course) { return }
 
             await fetch(apiBase + 'courses', {
                 method: 'POST',
