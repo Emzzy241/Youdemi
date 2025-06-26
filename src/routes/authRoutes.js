@@ -27,6 +27,9 @@ router.post('/register', async (req, res) => {
             }
         })
 
+        console.log('User created successfully:', user.username);
+        res.status(201).json({ message: "User created successfully" });
+
         const defaultCourse = `Hi there :) Add your first course!`
         await prisma.course.create({
             data: {
@@ -37,8 +40,20 @@ router.post('/register', async (req, res) => {
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEY, { expiresIn: '24h' })
         res.json({ token })
     } catch (err) {
+        if (err.code === 'P2002') {
+            const duplicateField = err.meta?.target?.[0] || 'Field';
+            return res.status(409).json({ message: `❌ ${duplicateField.charAt(0).toUpperCase() + duplicateField.slice(1)} already exists.` });
+        }
+
+        // if (err.code === 'P2002') {
+        //     //  Unique constraint violation
+        //     const field = err.meta?.target?.[0] || 'field';
+        //     return res.status(409).json({ message: `❌ ${field.charAt(0).toUpperCase() + field.slice(1)} already exists.` });
+        // }
+
         console.log(err.message)
-        res.sendStatus(503)
+        console.error(err)
+        res.status(503).json({ message: 'Something went wrong while registering. Please try again later.' });
     }
     // res.send("This: " + password + " Became this hashed password: " + hashedPassword)
     // res.sendStatus(200)
