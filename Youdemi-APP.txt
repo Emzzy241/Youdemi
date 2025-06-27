@@ -41,6 +41,8 @@ So I check the input they give and deduce whether it includes @ symbol for an em
 
 // Future fixes for prod; Ensuring that User's cannot enter an invalid email address, I can use an API for sites like verifalia to ensure that an anyhow person cannot just enter a wrong email address, it will be initially sent to their site to verify before User logs in.... Latency might arise, just make sure your application is super fast
 
+// Future updates, allowing users to sign up with google account, GitHub account, (if possible), Apple Account
+
 // TODO, Later On,
 
 // A confirm Password feature, and test it in the REST Emulator
