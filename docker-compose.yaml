@@ -1,5 +1,5 @@
-services: 
-  app: 
+services:
+  app:
     build: .
     container_name: youdemi-app
     environment:
@@ -7,16 +7,47 @@ services:
       - JWT_SECRET_KEY=dynasty_secret_key
       - NODE_ENV=development
       - PORT=5000
-
     ports:
       - "5000:5000"
     depends_on:
       - db
-    volumes:
-      - .:/app
-      - /app/node_modules
-    command: sh -c "npx prisma generate && node ./src/server.js"
-  
+    # Removed the '. /app' volume as 'develop.watch' with 'action: sync' will handle this.
+    # The '/app/node_modules' volume is still useful to persist node_modules
+    # between container restarts and to prevent them from being synced unnecessarily.
+    # volumes:
+    #   - /app/node_modules # Keep this to persist node_modules outside the sync process
+    
+    # ----------------------------------------------------------------------
+    # IMPORTANT CHANGE: Use a development server that watches for file changes
+    # You will likely need to install 'nodemon' in your project's dev dependencies:
+    # npm install --save-dev nodemon
+    # Or add a 'dev' script to your package.json, e.g.: "dev": "nodemon src/server.js"
+    # ----------------------------------------------------------------------
+    command: sh -c "npx prisma generate && npm run dev" # Changed here
+
+    # ----------------------------------------------------------------------
+    # New: Develop Watch Configuration
+    # This tells Docker Compose to watch your host machine's current directory (.),
+    # and when files change, sync them to /app inside the container.
+    # Nodemon (from the command above) will then detect these changes and restart your app.
+    # ----------------------------------------------------------------------
+    develop:
+      watch:
+        - action: sync
+          path: .          # Watch the entire project directory on your host
+          target: /app     # Sync changes to /app inside the container
+          ignore:
+            - node_modules/ # Crucial: Ignore node_modules to prevent syncing them back and forth
+            - .git/         # Ignore git-related files
+            - .dockerignore # Ignore Dockerfile ignore patterns
+            - .gitignore    # Ignore Git ignore patterns
+            - dist/         # If you have a build output directory, ignore it
+            - build/        # Another common build output directory
+            - tmp/          # Temporary files
+            - logs/         # Log files
+            # Add any other directories/files that change frequently but
+            # you don't want to trigger a sync (e.g., specific log files, temporary build artifacts)
+
   db:
     image: postgres:13-alpine
     container_name: postgres-db
@@ -31,3 +62,54 @@ services:
 
 volumes:
   postgres-data:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Previous code snippet before the watch service
+# services: 
+#   app: 
+#     build: .
+#     container_name: youdemi-app
+#     environment:
+#       - DATABASE_URL=postgresql://postgres:postgres@db:5432/youdemiapp
+#       - JWT_SECRET_KEY=dynasty_secret_key
+#       - NODE_ENV=development
+#       - PORT=5000
+
+#     ports:
+#       - "5000:5000"
+#     depends_on:
+#       - db
+#     volumes:
+#       - .:/app
+#       - /app/node_modules
+#     command: sh -c "npx prisma generate && node ./src/server.js"
+  
+#   db:
+#     image: postgres:13-alpine
+#     container_name: postgres-db
+#     environment:
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: postgres
+#       POSTGRES_DB: youdemiapp
+#     ports:
+#       - "5432:5432"
+#     volumes:
+#       - postgres-data:/var/lib/postgresql/data
+
+# volumes:
+#   postgres-data:
