@@ -28,7 +28,7 @@ router.post('/register', async (req, res) => {
         })
 
         console.log('User created successfully:', user.username);
-        res.status(201).json({ message: "User created successfully" });
+        // res.status(201).json({ message: "User created successfully" });
 
         const defaultCourse = `Hi there :) Add your first course!`
         await prisma.course.create({
@@ -76,7 +76,7 @@ router.post('/login', async (req, res) => {
         const user = await prisma.user.findUnique({ where: whereClause });
 
         if (!user) {
-            return res.status(404).send({ message: "User not found, kindly verify if its the correct email or username." });
+            return res.status(404).send({ message: "Invalid credentials. Please check your login details." });
         }
 
         const passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
