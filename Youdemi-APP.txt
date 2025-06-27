@@ -34,6 +34,12 @@ So I check the input they give and deduce whether it includes @ symbol for an em
 
 
 
+// Huge Bug to fix, Prisma is failing to create the User, the findUnique() from Prisma is failing to find a Unique user with that unique email
+
+// Making a considerable amount of progress, I tested my code out in the REST emulator and it worked fine and responded when user entered an already existing email, and an already existing username, thus preventing them from going ahead
+
+
+// Future fixes for prod; Ensuring that User's cannot enter an invalid email address, I can use an API for sites like verifalia to ensure that an anyhow person cannot just enter a wrong email address, it will be initially sent to their site to verify before User logs in.... Latency might arise, just make sure your application is super fast
 
 // TODO, Later On,
 
