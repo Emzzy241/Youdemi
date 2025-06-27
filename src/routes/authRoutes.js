@@ -76,7 +76,7 @@ router.post('/login', async (req, res) => {
         const user = await prisma.user.findUnique({ where: whereClause });
 
         if (!user) {
-            return res.status(404).send({ message: "User not found" });
+            return res.status(404).send({ message: "User not found, kindly verify if its the correct email or username." });
         }
 
         const passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
