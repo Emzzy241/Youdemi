@@ -181,7 +181,7 @@
                     console.log(data.user)
                     console.log(data.user.username)
                     localStorage.setItem('username', data.user.username);
-                    // window.location.href = './dashboard.html';
+                    window.location.href = './dashboard.html';
                 } else {
                     throw new Error(data.message || 'Authentication failed.');
                 }
