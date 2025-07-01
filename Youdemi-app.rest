@@ -29,7 +29,7 @@ GET http://localhost:5000/auth/logout
 
 ### Testing the /app endpoint to return all courses, later on, I have to update this endpoint and change the route to /courses
 GET http://localhost:5000/app
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTEsImlhdCI6MTc1MTM3MzcwNywiZXhwIjoxNzUxNDYwMTA3fQ.c45w09K0ieIhBrNurW8OiEv4oUhSLu377PELaonylzA
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MTM5NzY3NiwiZXhwIjoxNzUxNDg0MDc2fQ.O4cwK_hf2mnBW72c3h0yg28W12a_vuh91X13u4w4iJU
 
 ### Testing the POST /app endpoint to create a new course
 POST http://localhost:5000/app
