@@ -34,7 +34,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MTM5
 ### Testing the POST /app endpoint to create a new course
 POST http://localhost:5000/app
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTEsImlhdCI6MTc1MTM3MzcwNywiZXhwIjoxNzUxNDYwMTA3fQ.c45w09K0ieIhBrNurW8OiEv4oUhSLu377PELaonylzA
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTEsImlhdCI6MTc1MTQwNzQ5MiwiZXhwIjoxNzUxNDkzODkyfQ.3wKPafDdswsWZM7NPLUBCbuokRWPKsXLs_pd5G1JGaw
 
 {
     "courseName": "CHM 101 - Chemistry"
