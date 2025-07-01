@@ -26,7 +26,6 @@
                         <input type="password" placeholder="Password" />
                     </div>
                     <input id="authBtnLogin" type="submit" value="Login" class="btn solid" />
-                    <a href="./dashboard.html">Dashboard Page</a>
 
                     <p class="social-text">Or Sign in with social platforms</p>
                     <div class="social-media">
@@ -200,33 +199,33 @@
             }, 3000);
         }
 
-        async function fetchCourses(params) {
-            isLoading = true
-            const response = await fetch(apiBase + 'courses', {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }
-            })
+        // async function fetchCourses(params) {
+        //     isLoading = true
+        //     const response = await fetch(apiBase + 'courses', {
+        //         method: 'GET',
+        //         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }
+        //     })
 
-            const coursesData = await response.json()
-            courses = coursesData
-            isLoading = false
-            renderCourses(courses)
-        }
+        //     const coursesData = await response.json()
+        //     courses = coursesData
+        //     isLoading = false
+        //     renderCourses(courses)
+        // }
 
-        function renderCourses(courses) {
-            const coursesContainer = document.querySelector('.courses-container')
-            coursesContainer.innerHTML = ''
-            courses.forEach(course => {
-                const courseElement = document.createElement('div')
-                courseElement.classList.add('course')
-                courseElement.innerHTML = `
-                    <h3>${course.title}</h3>
-                    <p>${course.description}</p>
-                    <button class="btn">View Course</button>
-                `
-                coursesContainer.appendChild(courseElement)
-            })
-        }
+        // function renderCourses(courses) {
+        //     const coursesContainer = document.querySelector('.courses-container')
+        //     coursesContainer.innerHTML = ''
+        //     courses.forEach(course => {
+        //         const courseElement = document.createElement('div')
+        //         courseElement.classList.add('course')
+        //         courseElement.innerHTML = `
+        //             <h3>${course.title}</h3>
+        //             <p>${course.description}</p>
+        //             <button class="btn">View Course</button>
+        //         `
+        //         coursesContainer.appendChild(courseElement)
+        //     })
+        // }
 
     </script>
 </body>
