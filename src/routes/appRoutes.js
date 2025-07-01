@@ -44,29 +44,6 @@ router.post('/', async (req, res) => {
     res.json(course)
 })
 
-// router.put('/:id', async (req, res) => {
-//     try {
-//         const { completed } = req.body
-//         const { id } = req.params
-
-//         const updatedCourse = await prisma.course.update({
-//             where: {
-//                 id: parseInt(id),
-//                 userId: req.userId
-//             },
-//             data: {
-//                 courseName: req.body.courseName,
-//                 completed: !!completed
-//             }
-//         })
-//     } catch (err) {
-//         console.log(err.message)
-//         return res.status(500).send({ message: "An error occurred while updating the course \n Please check if that course ID still exists" })
-
-//     }
-//     res.json(updatedCourse)
-// })
-
 router.put('/:id', async (req, res) => {
     const { completed } = req.body
     const { id } = req.params

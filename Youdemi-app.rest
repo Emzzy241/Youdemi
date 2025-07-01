@@ -9,8 +9,8 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-    "username": "Sarah",
-    "password": "Mojiboye"
+    "email": "dynasty241@email.com",
+    "password": "123123123"
 }
 
 ### Testing the /register
@@ -29,31 +29,31 @@ GET http://localhost:5000/auth/logout
 
 ### Testing the /app endpoint to return all courses, later on, I have to update this endpoint and change the route to /courses
 GET http://localhost:5000/app
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzcsImlhdCI6MTc1MTM3MDc3NSwiZXhwIjoxNzUxNDU3MTc1fQ.OUY8nPKCL8aoIYCNqGt1OsubfhWiS0eUNy4kA8HhC9k
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTEsImlhdCI6MTc1MTM3MzcwNywiZXhwIjoxNzUxNDYwMTA3fQ.c45w09K0ieIhBrNurW8OiEv4oUhSLu377PELaonylzA
 
 ### Testing the POST /app endpoint to create a new course
 POST http://localhost:5000/app
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzcsImlhdCI6MTc1MTM3MDc3NSwiZXhwIjoxNzUxNDU3MTc1fQ.OUY8nPKCL8aoIYCNqGt1OsubfhWiS0eUNy4kA8HhC9k
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTEsImlhdCI6MTc1MTM3MzcwNywiZXhwIjoxNzUxNDYwMTA3fQ.c45w09K0ieIhBrNurW8OiEv4oUhSLu377PELaonylzA
 
 {
     "courseName": "CHM 101 - Chemistry"
 }
 
 ### Testing the GET /app/:id endpoint to get a specific course by ID
-GET http://localhost:5000/app/34
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzcsImlhdCI6MTc1MTM3MDc3NSwiZXhwIjoxNzUxNDU3MTc1fQ.OUY8nPKCL8aoIYCNqGt1OsubfhWiS0eUNy4kA8HhC9k
+GET http://localhost:5000/app/73
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTEsImlhdCI6MTc1MTM3MzcwNywiZXhwIjoxNzUxNDYwMTA3fQ.c45w09K0ieIhBrNurW8OiEv4oUhSLu377PELaonylzA
 
 ### Testing the PUT /app/:id endpoint to update a specific course by ID
-PUT http://localhost:5000/app/37
+PUT http://localhost:5000/app/87
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzcsImlhdCI6MTc1MTM3MTQ0MywiZXhwIjoxNzUxNDU3ODQzfQ.yX3LjX8oC3guje6mO2gTfFzIVaa5I1u765NfrnKQhe0
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTEsImlhdCI6MTc1MTM3MzcwNywiZXhwIjoxNzUxNDYwMTA3fQ.c45w09K0ieIhBrNurW8OiEv4oUhSLu377PELaonylzA
 
 {
-    "courseName": "CHM 101 - Introduction to Chemistry",
+    "courseName": "CHM 102 - Organic Chemistry",
     "completed": 1
 }
 
 ### Testing the DELETE /app/:id endpoint to delete a specific course by ID
-DELETE http://localhost:5000/app/36
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzcsImlhdCI6MTc1MTM3MDc3NSwiZXhwIjoxNzUxNDU3MTc1fQ.OUY8nPKCL8aoIYCNqGt1OsubfhWiS0eUNy4kA8HhC9k
+DELETE http://localhost:5000/app/88
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTEsImlhdCI6MTc1MTM3MzcwNywiZXhwIjoxNzUxNDYwMTA3fQ.c45w09K0ieIhBrNurW8OiEv4oUhSLu377PELaonylzA
