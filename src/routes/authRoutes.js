@@ -38,7 +38,7 @@ router.post('/register', async (req, res) => {
             }
         })
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEY, { expiresIn: '24h' })
-        res.json({ token })
+        res.json({ token, user })
     } catch (err) {
         if (err.code === 'P2002') {
             const duplicateField = err.meta?.target?.[0] || 'Field';
@@ -87,32 +87,12 @@ router.post('/login', async (req, res) => {
 
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEY, { expiresIn: '24h' });
 
-        res.json({ token });
+        res.json({ token, user });
         console.log('User logged in successfully:', user.username);
     } catch (err) {
         console.error(err);
         res.sendStatus(503);
     }
-
-    // try {
-    //     const user = await prisma.user.findUnique({
-    //         where: {
-    //             username: username,
-    //             email: username
-    //         }
-    //     })
-
-    //     if (!user) { return res.status(404).send({ message: "User not found" }) }
-
-    //     const passwordIsValid = bcrypt.compareSync(password, user.password)
-    //     if (!passwordIsValid) { return res.status(401).send({ message: "Password is invalid"}) }
-
-    //     const token = jwt.sign({ id:user.id }, process.env.JWT_SECRET_KEY, { expiresIn: '24h' })
-    //     res.json({ token })
-    // } catch (err) {
-    //     console.log(err.message)
-    //     res.sendStatus(503)
-    // }
 })
 
 export default router
