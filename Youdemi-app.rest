@@ -9,7 +9,7 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-    "email": "dynasty241@email.com",
+    "email": "emazon@email.com",
     "password": "123123123"
 }
 
