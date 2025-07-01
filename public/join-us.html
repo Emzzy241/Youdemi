@@ -177,7 +177,11 @@
 
                 if (data.token) {
                     localStorage.setItem('token', data.token);
-                    window.location.href = './dashboard.html';
+                    console.log(data);
+                    console.log(data.user)
+                    console.log(data.user.username)
+                    localStorage.setItem('username', data.user.username);
+                    // window.location.href = './dashboard.html';
                 } else {
                     throw new Error(data.message || 'Authentication failed.');
                 }

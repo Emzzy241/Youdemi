@@ -13,6 +13,8 @@
 </head>
 
 <body>
+    
+        <h2> Welcome <span id="username"></span></h2>
 
     <header>
         <h1 class="text-gradient">You have 0 open Courses.</h1>
@@ -39,6 +41,10 @@
 
 
     <script>
+
+        const outputUserName = document.getElementById("username")
+        outputUserName.innerText = `${localStorage.getItem("username")}`
+
         let token = localStorage.getItem('token')
 
         let isLoading = false
@@ -193,6 +199,8 @@
                 if (data.token) {
                     token = data.token
                     localStorage.setItem('token', token)
+                    console.log(data)
+                    localStorage.setItem('username', username)
 
                     // authenticating into loading
                     authBtn.innerText = 'Loading...'
@@ -307,6 +315,10 @@
             margin: 0 auto;
             padding: 1rem;
             min-height: 100vh;
+        }
+
+        span#username {
+            color: brown;
         }
 
         main,
