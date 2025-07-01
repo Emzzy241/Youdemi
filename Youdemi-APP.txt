@@ -168,5 +168,97 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDcz
 
 
 
+A brief overview of the Authorization:
+
+There will be 4 roles; User, Admin, Instructor, Students. 
+
+1. Every one who signs up is a User
+2. Admin will be hardcoded for now i.e Directly from the codebase, I will be updating the Admin status i.e I will set a username and password for an admin, from the codebase (research how to do that online or watch a course on YouTube for it, search: User-Roles JavaScript NodeJS... If their ORM tool isn't Prisma or their database is not PostgreSQL, use AI alongside documentation to implement, ask AI for where you should be reading in the documentation to be able to solve this issue, don't just ask it to solve it for you in ORM + PRISMA, as Ma'am Kim always say; Learn how to read documentation please)
+3. An Admin can make a User an Instructor
+4. An admin will also be the one to make  a User a Student.
+
+// So it is only when one is signed up as an Admin that I 
+
+// Read on Permissions in the RBAC (Role-Based Architecture) System.
+
+
+
+
+
+
+
+
+Alright then Mr. Paul, I already saved you the stress of coming up with the message... 
+
+Kindly tag us at with this:
+
+@Bloomvesthq on Facebook 
+
+And @BloomvestHQ on Twitter
+
+
+
+
+
+Good morning and welcome to Bloomvest! 👋
+We’re so excited to have you join a growing community where smart saving meets trusted people 💜
+
+Whether you're saving for a goal, building wealth one step at a time, or love the structure of the Ajo lifestyle — there's a perfect circle waiting for you.
+
+💡 Explore Our Active Ajo Plans:
+🔹 Budget Boost 💰
+₦5,000 weekly | Get ₦25,000
+🪑 All slots filled!
+📆 Kicked off: June 21
+
+🔹 Hustle Circle 💼
+₦10,000 weekly | Get ₦100,000
+🔥 10 slots available
+📆 Starts: June 28
+Ideal for consistent weekly savers!
+
+🔹 Monthly Builders 🧱
+₦20,000 monthly | Get ₦100,000
+⚡ 4 slots left
+📆 Starts: June 30
+Perfect for steady monthly savings
+
+🔹 Premium Rotator 💎
+₦50,000 monthly | Get ₦500,000
+🔥 10 slots available
+📆 Starts: July 1
+For serious, goal-driven savers 💼
+
+🔹 Family Goals 👨‍👩‍👧‍👦
+₦100,000 monthly | Get ₦500,000
+🔥 5 slots available
+📆 Starts: July 15
+Great for joint savings with family or trusted friends
+
+🛠️ Bloomvest Does More Than Ajo:
+With your Bloomvest Wallet, you can also:
+📱 Buy Airtime & Data
+💡 Pay Electricity Bills
+📺 Subscribe to Cable TV (DStv, GOtv, Startimes)
+All from one secure app — anytime, anywhere.
+
+🚀 Ready to Get Started?
+👉 Reserve your Ajo spot now:
+https://www.bloominvest.io/thrift/join
+
+🔐 A Few Things to Note:
+✅ You’ll be added using your Bloomvest username or email
+✅ We’ll notify you once you're added to a group
+✅ A ₦1,000 one-time commitment fee will be deducted from your first thrift
+
+📝 Don’t have an account yet?
+Create one in under 2 minutes:
+🌐 https://bloominvest.io/
+
+We're here to help you save smarter, live better, and grow faster.
+Feel free to reach out anytime — we’re just a message away! 💜
+
+#TeamBloomvest #SaveWithEase #DigitalAjo #SmartMoneyMoves
+
 
 

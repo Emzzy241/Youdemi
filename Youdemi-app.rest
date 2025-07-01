@@ -29,12 +29,12 @@ GET http://localhost:5000/auth/logout
 
 ### Testing the /app endpoint to return all courses, later on, I have to update this endpoint and change the route to /courses
 GET http://localhost:5000/app
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzcsImlhdCI6MTc1MTM3MDc3NSwiZXhwIjoxNzUxNDU3MTc1fQ.OUY8nPKCL8aoIYCNqGt1OsubfhWiS0eUNy4kA8HhC9k
 
 ### Testing the POST /app endpoint to create a new course
 POST http://localhost:5000/app
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzcsImlhdCI6MTc1MTM3MDc3NSwiZXhwIjoxNzUxNDU3MTc1fQ.OUY8nPKCL8aoIYCNqGt1OsubfhWiS0eUNy4kA8HhC9k
 
 {
     "courseName": "CHM 101 - Chemistry"
@@ -42,12 +42,12 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDcz
 
 ### Testing the GET /app/:id endpoint to get a specific course by ID
 GET http://localhost:5000/app/34
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzcsImlhdCI6MTc1MTM3MDc3NSwiZXhwIjoxNzUxNDU3MTc1fQ.OUY8nPKCL8aoIYCNqGt1OsubfhWiS0eUNy4kA8HhC9k
 
 ### Testing the PUT /app/:id endpoint to update a specific course by ID
-PUT http://localhost:5000/app/36
+PUT http://localhost:5000/app/37
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzcsImlhdCI6MTc1MTM3MTQ0MywiZXhwIjoxNzUxNDU3ODQzfQ.yX3LjX8oC3guje6mO2gTfFzIVaa5I1u765NfrnKQhe0
 
 {
     "courseName": "CHM 101 - Introduction to Chemistry",
@@ -56,4 +56,4 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDcz
 
 ### Testing the DELETE /app/:id endpoint to delete a specific course by ID
 DELETE http://localhost:5000/app/36
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsImlhdCI6MTc1MDczMjc2MSwiZXhwIjoxNzUwODE5MTYxfQ.p2p4vNlg6iDSjTIy8mDojQvYJErk7h_ZYCgi8R1GnDM
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzcsImlhdCI6MTc1MTM3MDc3NSwiZXhwIjoxNzUxNDU3MTc1fQ.OUY8nPKCL8aoIYCNqGt1OsubfhWiS0eUNy4kA8HhC9k
