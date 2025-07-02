@@ -36,7 +36,79 @@ So I check the input they give and deduce whether it includes @ symbol for an em
 
 // Huge Bug to fix, Prisma is failing to create the User, the findUnique() from Prisma is failing to find a Unique user with that unique email
 
-// Making a considerable amount of progress, I tested my code out in the REST emulator and it worked fine and responded when user entered an already existing email, and an already existing username, thus preventing them from going ahead
+// Making a considerable amount of progress, I tested my code out in the REST emulator and it worked fine and responded when user entered an already existing email, and an already existing username, thus preventing them from going ahead.
+
+// Something I studied about my code, if it signs up a specific user, it only allows to edit, get, delete courses created by that single user, and courses created by another user, access to edit them(delete or update), or even get them by their id would not be possible. So to ensure you can edit or delete the right course, each time you sign in, always ensure that you call the /app endpoint first so you can see a list of courses you have access to.
+
+There is a bug here, When I get all Courses (/app), it keeps incrementing the id by 1, check it out
+
+Wait a second, it seems I was the one doing it wrong, I was calling the wrong endpoint actually, (POST instead of GET /app)…. Always cross-check next time.
+Just to be on a safe side, get all courses first before you make an update (PUT or DELETE) to them 
+
+
+
+
+
+
+
+
+
+
+
+
+101... Where Ibrahim stopped at.
+
+From 102 - 151
+
+Its either I put opened or closed
+
+Date: 01/07/2025 ---> I helped my company in filling our grants (I reviewed over 50 Venture Capitalists and Investment Firms to see if my Company can gain funding from any one of them)
+
+
+
+Visit footer section of: https://cchub.africa/aof/innovation-support/ And you will see Growth capital Fund, click and from there you can find investments or visit: https://gc.fund/
+
+Datacamp Fellow,what is it about please
+
+For the dojo own: https://expertdojo.com/application/
+
+
+Coza 7DG
+
+"Anointing is the engine oil, Passion is the fuel.... The passion keeps you going" Bishop Oyedepo... Your dominion, my dominion is not in view without passion. Passion that cannot be seen is fake. TO be passionless is to be fuel-less, to be fuel-less is to be motionless, to be motionless is to be stagnant
+
+The more passionate a believer for God, the greater the resource he commands. MAthew 6:33, Bishop was 22 when he encountered this scripture.
+
+As you step back, God takes over and as God takes over, the battle is won. The journey will always start with mockery but it will always start with envy. Passion provokes prompt response
+
+
+Back to coding...
+Bug to fix, it still not rendering courses properly.... The issue still stems inside the dashboard.html, run it again, and you will see that there is no response. Fixed. Time: 14:14, 02/07/2025.
+
+Alright, so the next thing now is to try to ensure this project is refactored, and not just refactored but also follow the standards for a course platform app, for now, no extra work on the authentication will be done, more work will just be on the authorization and all... So, as you already know the banger.
+
+The end goal is to:
+1. Follow the MVC Architecture for the project. (Use one of your C# projects to see the MVC architecture in place)
+2. Have 3 sub-folders (admin, backend, frontend) to keep your code well origanized
+3. Branch out, edit the project and ensure it is well built
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Future fixes for prod; Ensuring that User's cannot enter an invalid email address, I can use an API for sites like verifalia to ensure that an anyhow person cannot just enter a wrong email address, it will be initially sent to their site to verify before User logs in.... Latency might arise, just make sure your application is super fast
@@ -47,7 +119,7 @@ So I check the input they give and deduce whether it includes @ symbol for an em
 
 // A confirm Password feature, and test it in the REST Emulator
 
-// Update the COure table to reflect this, as this is something very similar to what I hope to achieve
+// Update the Course table to reflect this, as this is something very similar to what I hope to achieve
 
 
 {
@@ -182,83 +254,6 @@ There will be 4 roles; User, Admin, Instructor, Students.
 // Read on Permissions in the RBAC (Role-Based Architecture) System.
 
 
-
-
-
-
-
-
-Alright then Mr. Paul, I already saved you the stress of coming up with the message... 
-
-Kindly tag us at with this:
-
-@Bloomvesthq on Facebook 
-
-And @BloomvestHQ on Twitter
-
-
-
-
-
-Good morning and welcome to Bloomvest! 👋
-We’re so excited to have you join a growing community where smart saving meets trusted people 💜
-
-Whether you're saving for a goal, building wealth one step at a time, or love the structure of the Ajo lifestyle — there's a perfect circle waiting for you.
-
-💡 Explore Our Active Ajo Plans:
-🔹 Budget Boost 💰
-₦5,000 weekly | Get ₦25,000
-🪑 All slots filled!
-📆 Kicked off: June 21
-
-🔹 Hustle Circle 💼
-₦10,000 weekly | Get ₦100,000
-🔥 10 slots available
-📆 Starts: June 28
-Ideal for consistent weekly savers!
-
-🔹 Monthly Builders 🧱
-₦20,000 monthly | Get ₦100,000
-⚡ 4 slots left
-📆 Starts: June 30
-Perfect for steady monthly savings
-
-🔹 Premium Rotator 💎
-₦50,000 monthly | Get ₦500,000
-🔥 10 slots available
-📆 Starts: July 1
-For serious, goal-driven savers 💼
-
-🔹 Family Goals 👨‍👩‍👧‍👦
-₦100,000 monthly | Get ₦500,000
-🔥 5 slots available
-📆 Starts: July 15
-Great for joint savings with family or trusted friends
-
-🛠️ Bloomvest Does More Than Ajo:
-With your Bloomvest Wallet, you can also:
-📱 Buy Airtime & Data
-💡 Pay Electricity Bills
-📺 Subscribe to Cable TV (DStv, GOtv, Startimes)
-All from one secure app — anytime, anywhere.
-
-🚀 Ready to Get Started?
-👉 Reserve your Ajo spot now:
-https://www.bloominvest.io/thrift/join
-
-🔐 A Few Things to Note:
-✅ You’ll be added using your Bloomvest username or email
-✅ We’ll notify you once you're added to a group
-✅ A ₦1,000 one-time commitment fee will be deducted from your first thrift
-
-📝 Don’t have an account yet?
-Create one in under 2 minutes:
-🌐 https://bloominvest.io/
-
-We're here to help you save smarter, live better, and grow faster.
-Feel free to reach out anytime — we’re just a message away! 💜
-
-#TeamBloomvest #SaveWithEase #DigitalAjo #SmartMoneyMoves
 
 
 
