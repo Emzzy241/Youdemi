@@ -253,7 +253,7 @@ There will be 4 roles; User, Admin, Instructor, Students.
 
 // Read on Permissions in the RBAC (Role-Based Architecture) System.
 
-
+// I will be looking at other projects online to atleast give me insights into what I will be building. Preferably GitHub projects is what I will be looking at, I will be using them as resources to build this project.
 
 
 
