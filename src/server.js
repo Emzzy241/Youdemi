@@ -2,7 +2,7 @@ import express from 'express';
 import path, { dirname } from 'path'
 import { fileURLToPath } from 'url';
 import authRoutes from './routes/authRoutes.js'
-import authMiddleware from './middleware/authMiddleware.js';
+import authMiddleware from './middlewares/authMiddleware.js';
 import appRoutes from './routes/appRoutes.js'
 
 
