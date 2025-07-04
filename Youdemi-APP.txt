@@ -257,3 +257,29 @@ There will be 4 roles; User, Admin, Instructor, Students.
 
 
 
+MVP Order for the App:
+Deciding the Initial Features to Build
+
+User registration and login
+
+JWT auth setup (access + refresh)
+
+KYC Stage 1–3 flows
+
+Instructor can create/edit course
+
+Student can browse/buy course
+
+Admin can assign roles
+
+Dockerize + push to GitHub
+
+✅ YOUR MVP FEATURE ROADMAP (To Keep You Focused)
+Here’s that roadmap again for easy reference:
+
+MVP (Milestone 1)	🔐 Auth (Register/Login) + KYC flow (Tier 1–3)
+Milestone 2	📚 Course CRUD (Instructor) + Course Listing (Public)
+Milestone 3	🛒 Buy Course + Order Management (Student)
+Milestone 4	🧑‍💼 Admin Role Management + User Promotion
+Milestone 5	📦 Docker + GitHub Repo + CI/CD Setup
+
