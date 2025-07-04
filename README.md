@@ -12,14 +12,27 @@
 
 ## Project Structure
 ```sh
-youdemi-fullstack/
-├── prisma/              # Prisma schema and migration files
-├── src/
-│   └── server.js        # Entry point for the backend server
-├── Dockerfile
-├── docker-compose.yaml
+/youdemi-app
+│
+├── /src
+│   ├── /config            → Environment config, DB config, etc.
+│   ├── /controllers       → Handle request/response logic
+│   ├── /routes            → API route definitions
+│   ├── /services          → Business logic (no direct DB calls here)
+│   ├── /repositories      → DB logic, Prisma client usage
+│   ├── /middlewares       → Auth, error handlers, etc.
+│   ├── /models            → Prisma schema or types/interfaces
+│   ├── /utils             → Reusable helper functions
+│   ├── /validators        → Joi/Yup/Zod validation for requests
+│   ├── /tests             → Unit & integration tests (Jest)
+│   └── /app.js            → Express app entry
+│
+├── prisma/schema.prisma   → Prisma schema file
+├── .env                   → Environment variables
+├── Dockerfile             → Docker containerization
+├── docker-compose.yml     → For running DB and app locally
 ├── package.json
-└── .env
+└── README.md
 
 
 ```
