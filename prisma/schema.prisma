@@ -18,13 +18,44 @@ model User {
   username  String  @unique
   email     String  @unique
   password  String
-  course    Course[]
+  role      Role     @default(USER)
+  kycTier   Int
+  dob       Date?
+  country   String?
+  phone     String?
+  courses   Course[]
+  orders    Order[]
 }
 
 model Course {
   id        Int     @id @default(autoincrement())
   courseName      String
   completed Boolean @default(false)
-  userId    Int
-  user      User    @relation(fields: [userId], references: [id])
+  instructorId  Int
+  instructor    User  @relation(fields: [instructorId], references: [id])
+  Orders        Order[]
 }
+
+model Order {
+  id            Int     @id @default(autoincrement())
+  status        OrderStatus    @default(PENDING)
+  referenceId   User
+  createdAt     DateTime
+  updatedAt     DateTime
+  studentId     Int
+  student       User    @relation(fields: [studentId])
+}
+
+enum Role {
+  USER
+  ADMIN
+  INSTRUCTOR
+  STUDENT
+}
+
+enum OrderStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
+
