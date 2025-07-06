@@ -57,3 +57,25 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTEsImlhdCI6MTc1MTM3
 ### Testing the DELETE /app/:id endpoint to delete a specific course by ID
 DELETE http://localhost:5000/app/88
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTEsImlhdCI6MTc1MTM3MzcwNywiZXhwIjoxNzUxNDYwMTA3fQ.c45w09K0ieIhBrNurW8OiEv4oUhSLu377PELaonylzA
+
+### Testing the new endpoints for routes --user
+GET http://localhost:5000/api/users
+
+### kyc routes
+GET http://localhost:5000/api/kyc
+
+### payment routes
+GET http://localhost:5000/api/payments
+
+### course routes
+GET http://localhost:5000/api/courses
+
+### order routes
+http://localhost:5000/api/orders
+
+### auth routes
+GET http://localhost:5000/api/auth
+
+
+### testing hi route
+GET http://localhost:5000/hi
