@@ -9,7 +9,7 @@ import courseRoutes from './routes/courseRoutes.js'
 import kycRoutes from './routes/kycRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import paymentRoutes from './routes/paymentRoutes.js'
-// THank you for Watching, Dynasty :)
+// Thank you for Watching, Dynasty :)
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -37,11 +37,9 @@ app.use('/api/courses', courseRoutes)
 app.use('/api/orders', orderRoutes)
 app.use('/api/payments', paymentRoutes)
 app.use('/api/kyc', kycRoutes)
-// app.s 
 
-app.use('/auth', authRoutes)
+// app.use('/auth', authRoutes)
 app.use('/app', authMiddleware, appRoutes)
-
 
 app.get("/hi", async (req, res) => {
     res.send("Hello World, Welcome to the YouDemi App")
